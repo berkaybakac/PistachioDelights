@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tatlılar</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container text-center text-white">
+        <h1 class="main-title">Tatlılarımız</h1>
+        <div class="row">
+            {% for tatli in tatli_listesi %}
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm h-100 tatli-item">
+                    <img src="{{ url_for('static', filename=tatli.image) }}" class="card-img-top" alt="{{ tatli.name }}">
+                    <div class="card-body d-flex flex-column">
+                        <h2 class="card-title">{{ tatli.name }}</h2>
+                        <p class="card-text">{{ tatli.price }}</p>
+                        <form method="post" action="{{ url_for('sepete_ekle', tatli_adi=tatli.name) }}" class="mt-auto">
+                            <button type="submit" class="btn btn-success">Sepete Ekle</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <a href="{{ url_for('index') }}" class="btn btn-secondary">Geriye Git</a>
+        <a href="{{ url_for('sepet') }}" class="btn btn-primary">Sepete Git</a>
+    </div>
+</body>
+</html>

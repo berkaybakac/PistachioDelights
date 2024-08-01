@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ödeme</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container text-center text-white">
+        <h1 class="main-title">Ödeme Ekranı</h1>
+        <form method="post" action="{{ url_for('odeme') }}">
+            <div class="form-group">
+                <label for="cardNumber">Kart Numarası:</label>
+                <input type="text" class="form-control" id="cardNumber" name="cardNumber" required>
+            </div>
+            <div class="form-group">
+                <label for="cardName">Kart Üzerindeki İsim:</label>
+                <input type="text" class="form-control" id="cardName" name="cardName" required>
+            </div>
+            <div class="form-group">
+                <label for="expiryDate">Son Kullanma Tarihi:</label>
+                <input type="text" class="form-control" id="expiryDate" name="expiryDate" placeholder="MM/YY" required>
+            </div>
+            <div class="form-group">
+                <label for="cvv">CVV:</label>
+                <input type="text" class="form-control" id="cvv" name="cvv" required>
+            </div>
+            <button type="submit" class="btn btn-success">Ödemeyi Tamamla</button>
+        </form>
+        <a href="{{ url_for('sepet') }}" class="btn btn-secondary mt-3">Sepete Geri Dön</a>
+    </div>
+</body>
+</html>

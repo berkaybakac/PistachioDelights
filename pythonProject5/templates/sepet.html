@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sepet</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container text-center text-white">
+        <h1 class="main-title">Sepetiniz</h1>
+        <ul class="list-group">
+            {% for item in sepet %}
+            <li class="list-group-item">
+                {{ item.name }} - {{ item.quantity }}
+                <form method="post" action="{{ url_for('sepete_ekle', tatli_adi=item.name) }}" class="d-inline">
+                    <button type="submit" class="btn btn-success btn-sm">+</button>
+                </form>
+                <form method="post" action="{{ url_for('sepete_azalt', tatli_adi=item.name) }}" class="d-inline">
+                    <button type="submit" class="btn btn-danger btn-sm">-</button>
+                </form>
+            </li>
+            {% endfor %}
+        </ul>
+        <a href="{{ url_for('tatlilar') }}" class="btn btn-secondary mt-3">Tatlılara Dön</a>
+        <form method="post" action="{{ url_for('odeme_yapildi') }}" class="d-inline">
+            <button type="submit" class="btn btn-primary mt-3">Ödeme</button>
+        </form>
+    </div>
+</body>
+</html>
