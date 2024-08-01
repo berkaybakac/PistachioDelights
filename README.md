@@ -78,13 +78,13 @@ Sepet sayfasında, kullanıcılar sepetlerine ekledikleri ürünleri görebilir 
 ## Ekran Görüntüleri
 
 Tatlılar Sayfası:
-![Tatlılar](static/tatlilar.png)
+![Tatlılar]
 
 Sepet Sayfası:
-![Sepet](static/sepet.png)
+![Sepet]
 
 Ödeme Sayfası:
-![Ödeme](static/odeme.png)
+![Ödeme]
 
 ## Katkıda Bulunma
 
