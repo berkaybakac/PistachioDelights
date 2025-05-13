@@ -1,99 +1,130 @@
-# Yesiloğulları Desserts
+# PistachioDelights
 
-Yesiloğulları Desserts, en lezzetli Antep tatlılarını sunan bir web sitesidir. Bu projede, kullanıcılar çeşitli Antep tatlılarını inceleyebilir, sepete ekleyebilir ve online ödeme yapabilirler.
+PistachioDelights is a full-stack web application that simulates a dessert store experience. Users can register, browse a list of pistachio-based Turkish desserts, manage their shopping cart, and complete a simulated checkout process. The application is built using Flask, SQLAlchemy, and session-based logic.
 
-## Özellikler
+## Features
 
-- Tatlıları listeleme
-- Tatlıları sepete ekleme ve sepeti yönetme
-- Online ödeme işlemi
+- User registration with hashed passwords  
+- List of desserts with images and prices  
+- Add/remove desserts to/from cart with quantity control  
+- Session-based cart management  
+- Simulated checkout functionality  
+- Clean and modular Flask project structure  
 
-## Kurulum
+## Technologies Used
 
-### Gereksinimler
+- Python 3.8+  
+- Flask  
+- Flask-SQLAlchemy  
+- SQLite  
+- Jinja2  
+- HTML & CSS (with Bootstrap CDN)  
 
-- Python 3.8+
-- Flask
-- Flask-SQLAlchemy
-- Flask-WTF
+## Project Structure
 
-### Adımlar
+```
+.
+├── app.py             # Main Flask application
+├── models.py          # User model and password hashing
+├── config.py          # Application configuration and DB URI
+├── init_db.py         # Script to initialize the database
+├── static/            # Static assets (images, CSS)
+├── templates/         # HTML templates
+├── requirements.txt   # Python dependencies
+└── README.md          # Project documentation
+```
 
-1. Bu projeyi yerel makinenize klonlayın:
+## Installation
 
-    ```bash
-    git clone https://github.com/Bbakac/YesilogullariDesserts.git
-    ```
+Follow the steps below to run the project locally:
 
-2. Proje dizinine gidin:
+### 1. Clone the repository
 
-    ```bash
-    cd YesilogullariDesserts
-    ```
+```bash
+git clone https://github.com/berkaybakac/PistachioDelights.git
+cd PistachioDelights
+```
 
-3. Gerekli paketleri yükleyin:
+### 2. Install dependencies
 
-    ```bash
-    pip install -r requirements.txt
-    ```
+```bash
+pip install -r requirements.txt
+```
 
-4. Veritabanını oluşturun:
+### 3. Initialize the database
 
-    ```python
-    from app import db, app
-    with app.app_context():
-        db.create_all()
-    ```
+```python
+# Run Python shell
+python
 
-5. Uygulamayı başlatın:
+# Then execute the following:
+from app import db, app
+with app.app_context():
+    db.create_all()
+```
 
-    ```bash
-    flask run
-    ```
+### 4. Run the application
 
-6. Web tarayıcınızda `http://127.0.0.1:5000` adresine gidin.
+```bash
+flask run
+```
 
-## Proje Yapısı
+Then open your browser and go to:
 
-- `app.py`: Flask uygulamasının ana dosyası.
-- `models.py`: Veritabanı modellerini içerir.
-- `config.py`: Konfigürasyon ayarlarını içerir.
-- `static/`: CSS, görüntüler gibi statik dosyaları içerir.
-- `templates/`: HTML şablonlarını içerir.
+```
+http://127.0.0.1:5000
+```
 
-## Kullanım
+## Available Routes
 
-### Tatlılar Sayfası
+| Route                     | Description                                |
+|---------------------------|--------------------------------------------|
+| `/`                       | Homepage                                   |
+| `/about`                  | About page                                 |
+| `/register`               | Register a new user                        |
+| `/tatlilar`               | Browse dessert items                       |
+| `/sepete_ekle/<tatli>`    | Add a dessert to the cart                  |
+| `/sepete_azalt/<tatli>`   | Decrease quantity or remove from cart      |
+| `/sepet`                  | View current cart                          |
+| `/odeme_yapildi`          | Simulated checkout confirmation            |
 
-Tatlılar sayfasında, kullanıcılar farklı tatlıları görebilir ve sepetlerine ekleyebilirler.
+## Screenshots
 
-### Sepet Sayfası
+### Desserts Page
 
-Sepet sayfasında, kullanıcılar sepetlerine ekledikleri ürünleri görebilir ve yönetebilirler.
+![Desserts Page](static/tatlilar_sayfasi.png)
 
-### Ödeme Sayfası
+### Cart Page
 
-Ödeme sayfasında, kullanıcılar ödeme bilgilerini girerek siparişlerini tamamlayabilirler.
+![Cart Page](static/sepet_sayfasi.png)
 
-## Ekran Görüntüleri
+### Checkout Page
 
-Tatlılar Sayfası:
-![Tatlılar]
+![Checkout Page](static/odeme_sayfasi.png)
 
-Sepet Sayfası:
-![Sepet]
+> Make sure the above images exist inside the `static/` folder with matching filenames.
 
-Ödeme Sayfası:
-![Ödeme]
+## Security Notes
 
-## Katkıda Bulunma
+Passwords are hashed using Werkzeug:
 
-Katkıda bulunmak isterseniz, lütfen bir pull request oluşturun. Her türlü katkı ve geri bildirim için teşekkür ederiz.
+```python
+from werkzeug.security import generate_password_hash, check_password_hash
 
-## Lisans
+def set_password(self, password):
+    self.password_hash = generate_password_hash(password)
 
-Bu proje MIT Lisansı ile lisanslanmıştır. Daha fazla bilgi için `LICENSE` dosyasına bakın.
+def check_password(self, password):
+    return check_password_hash(self.password_hash, password)
+```
 
----
+## Possible Improvements
 
-Bu proje, Flask ve Bootstrap kullanarak geliştirilmiştir. Amacı, en lezzetli Antep tatlılarını dijital ortamda sunmaktır. Projeye katkıda bulunmak ve geri bildirimde bulunmak için lütfen iletişime geçin.
+- Add login/logout functionality  
+- Store cart items in a database instead of session  
+- Admin interface for dessert management  
+- Payment gateway integration  
+
+## License
+
+This project is licensed under the MIT License.
