@@ -86,22 +86,6 @@ Go to `http://127.0.0.1:5000` in your browser.
 | `/sepet`               | View and manage shopping cart                  |
 | `/odeme_yapildi`       | Simulated payment confirmation and cart reset  |
 
-## Screenshots
-
-### Desserts Page
-
-![Desserts Page](./static/Baklava.png)
-
-### Cart Page
-
-![Cart Page](./static/katmer.jpg)
-
-### Checkout Page
-
-![Checkout Page](./static/sutlac.jpg)
-
-> Tip: You can rename or standardize screenshots (e.g., `tatlilar_sayfasi.png`) for consistency.
-
 ## Security
 
 Passwords are never stored in plain text.  
